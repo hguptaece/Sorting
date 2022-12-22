@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+
+void display(int arr[], int n){
+    for(int i=0; i<n; i++){
+        cout<<arr[i]<<" , ";
+    }
+    cout<<"\n";
+}
+
+void bubblesort(int arr[], int n){
+    for(int i=0; i<n-1; i++){
+        cout<<"for i="<<i<<" : ";
+        display(arr, n);
+        for(int j=0; j<n-1; j++){
+            if(arr[j] > arr[j+1]){
+                swap(arr[j], arr[j+1]);
+            }
+        }
+    }
+}
+
+void selectionsort(int arr[], int n){
+    for(int i=0; i<n-1; i++){
+        int mini=i;
+        for(int j=i+1; j<n; j++){
+            if(arr[j] < arr[mini]){
+                mini=j;
+            }
+        }
+        swap(arr[i], arr[mini]);
+    }
+
+}
+
+void insertionsort(int arr[], int n){
+    for(int i=1; i<n; i++){
+        int j=i-1;
+        int x=arr[i];
+        while(j>=0 && arr[j] > x){
+            arr[j+1] = arr[j];
+            j--;
+        }
+        arr[j+1]=x;
+    }
+}
+
+int main(){
+    int arr[]={1,33,432,456,3,5,67,85,4,87,567,6};
+    int n=12;
+    display(arr, n);
+    bubblesort(arr, n);
+    display(arr, n);
+    selectionsort(arr, n);
+    display(arr, n);
+    insertionsort(arr, n);
+    display(arr , n);
+    return 0;
+}
